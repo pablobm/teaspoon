@@ -23,7 +23,8 @@ module Teaspoon
       end
 
       def run_specs(runner, url)
-        driver = ::Selenium::WebDriver.for(driver_options[:client_driver])
+        client_driver_opts = driver_options.fetch(:client_driver_opts, {}).symbolize_keys
+        driver = ::Selenium::WebDriver.for(driver_options[:client_driver], client_driver_opts)
         driver.navigate.to(url)
 
         ::Selenium::WebDriver::Wait.new(driver_options).until do

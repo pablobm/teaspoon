@@ -38,7 +38,7 @@ describe Teaspoon::Driver.fetch(:selenium) do
 
   describe "#run_specs" do
     it "loads firefox for the webdriver" do
-      expect(Selenium::WebDriver).to receive(:for).with(:firefox)
+      expect(Selenium::WebDriver).to receive(:for).with(:firefox, {})
       subject.run_specs(runner, "_url_")
     end
 
